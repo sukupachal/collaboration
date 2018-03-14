@@ -1,0 +1,30 @@
+<!-- all-job-view -->
+
+<div>
+	<div class="container">
+	<div>
+	
+	<div class="col-md-4" ng-repeat="job in ctrl.jobs">
+	<div>
+	<div>
+	<h3>{{job.jobProfile}}</h3>
+	<p>Written By : {{blog.userId}}</p>
+	<div>
+	
+	
+<input type="button" class="btn btn-info floatright"
+	ng-click="ctrl.getSelectedJob(job.jobId)" 
+      value="Know More..">
+      
+
+	</div>
+	</div>
+	<div>
+	<h4><a><span><i class="fa fa-rss" aria-hidden="true"></i></span>{{job.jobProfile}}</a></h4>
+<ul style="text-align: center;">
+
+		</ul>
+		</div>
+		</div>
+		</div>
+		</div>

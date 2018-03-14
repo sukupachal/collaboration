@@ -1,0 +1,34 @@
+<div>
+   <div class="container">
+   <div class="row">
+   <div class="col-md-8">
+   <h1><a style="color: #efefef; text-decoration: none;">{{selectedForum.forumName}}</a></h1>
+<h4>Written By : {{selectedForum.userId}} &nbsp;&nbsp;   On : {{selectedForum.forumCreationDate | date}}</h4>
+ </div>
+ </div>
+<div class="row">
+ <div>
+  <div>
+   <h3><i class="fa fa-cube">{{selectedForum.forumName}}</i></h3>
+       <p>{{selectedForum.forumDescription}}</p>
+       <p>
+         <strong>Best regards</strong><br>
+         <small>{{selectedForum.userId}}</small>
+       </p>
+     </div><!-- /blog-area -->
+<div class="col-md-8 like-forum" ng-hide="currentUser==''">
+<div>
+	<button type="button" class="btn-more forum-like-style"
+	ng-click="ctrl.likeForum(selectedForum, selectedForum.forumId)">
+<i class="fa fa-thumbs-up" aria-hidden="true">&nbsp;Like&nbsp;&nbsp;<span>{{selectedForum.forumUserCount}}</span></i>
+	</button>
+</div>
+        </div>
+          </div><!-- /col-md-8 -->
+          
+          
+          </div><!-- /col-md-4 -->
+
+        </div>
+      </div>
+    </div>

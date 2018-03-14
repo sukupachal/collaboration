@@ -1,0 +1,33 @@
+<div>
+   <div class="container">
+   <div class="row">
+   <div class="col-md-8">
+   <h1><a style="color: #efefef; text-decoration: none;">{{selectedJob.jobProfile}}</a></h1>
+<h4>Written By : {{selectedJob.userId}} &nbsp;&nbsp;   On : {{selectedJob.forumCommentDate | date}}</h4>
+ </div>
+ </div>
+<div class="row">
+ <div>
+  <div>
+   <h3><i class="fa fa-cube">{{selectedJob.jobProfile}}</i></h3>
+       
+       <p>
+         <strong>Best regards</strong><br>
+         <small>{{selectedJob.userId}}</small>
+       </p>
+     </div><!-- /blog-area -->
+<div class="col-md-8 like-job" ng-hide="currentUser==''">
+<div>
+	<button type="button" class="btn-more forum-like-style"
+	ng-click="ctrl.likeJob(selectedJob, selectedJob.jobId)">
+	</button>
+</div>
+        </div>
+          </div><!-- /col-md-8 -->
+          
+          
+          </div><!-- /col-md-4 -->
+
+        </div>
+      </div>
+    

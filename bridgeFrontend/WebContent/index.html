@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+<meta charset="UTF-8">
+<title>Demo - </title>
+<link rel="icon" href="resources/img/binder.png">
+
+<!-- Bootstrap, Font Awesome and jQuery css -->
+<link href="resources/css/font-awesome.css" rel="stylesheet">
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/css/jquery-ui.min.css" rel="stylesheet">
+
+
+</head>
+
+
+<body>
+	<!-- ---------------------- navbar start -------------------------->
+	<div class="container">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<div class="logo">
+					<a class="navbar-brand" href="#/"></a>
+				</div>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			
+			<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+				<nav id="link-effect-12">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#/" class="a-hover"><span>Home</span></a></li>
+						
+																
+											
+						<!-- <<<<<<<<<< Blog >>>>>>>>>> -->
+						
+						<li ng-show="currentUser==''"><a href="#/list_blog" class="a-hover"><span>Blog</span></a></li>
+						
+						<li ng-hide="currentUser==''"><a class="dropdown-toggle a-hover" data-toggle="dropdown">Blog
+							<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#/create_blog"><span>Add New Blog</span></a></li>
+								<li><a href="#/list_blog"><span>Show All Blogs</span></a></li>
+							</ul>
+						</li>
+						
+												
+												
+			
+			<!-- <<<<<<<<<< Forum >>>>>>>>>> -->
+						
+			<li ng-show="currentUser==''"><a href="#/list_forum" class="a-hover"><span>Forum</span></a></li>
+ 			<li ng-hide="currentUser==''"><a class="dropdown-toggle a-hover" data-toggle="dropdown">Forum
+							<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#/create_forum"><span>Add New Forum</span></a></li>
+								<li><a href="#/list_forums"><span>Show All Forums</span></a></li>
+							</ul>
+						</li>
+						
+				
+				<!-- <<<<<<<<<< Job >>>>>>>>>> -->
+						
+			<li ng-show="currentUser==''"><a href="#/list_job" class="a-hover"><span>Job</span></a></li>
+ 			<li ng-hide="currentUser==''"><a class="dropdown-toggle a-hover" data-toggle="dropdown">Job
+							<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#/create_job"><span>Add New Job</span></a></li>
+								<li><a href="#/list_jobs"><span>Show All Jobs</span></a></li>
+							</ul>
+						</li>
+				
+				
+												
+								</ul>
+				</nav>
+			</div>
+												
+							
+				
+			
+			<!-- /.navbar-collapse -->
+		</nav>
+	</div>
+	<!-- ---------------------- /navbar end -------------------------->
+
+	<!-- ------------------- content area start ---------------------->
+
+	<ng-view>
+		<!-- Different pages will appear here... -->
+	</ng-view>
+
+	<!-- ------------------- content area start ---------------------->
+
+	<!-- ---------------------- footer start ------------------------->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-bottom">
+				<div class="footer-bottom-left">
+					<p>
+						@2017. <a href="#/">Demo.</a>Copyright by 					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ---------------------- /footer end ------------------------->
+
+
+	<script src="resources/js/sockjs-0.3.4.js"></script>
+	<script src="resources/js/stomp.js"></script>
+	
+	<!--  javascript for (angular + jquery + bootstrap)  -->
+	<script src="resources/js/angular.js"></script>
+	<script src="resources/js/angular-cookies.min.js"></script>
+	<script src="resources/js/angular-route.min.js"></script>
+	<script src="resources/js/jquery-1.11.0.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	
+
+	<!-- modulewise custom javascript -->
+	<script src="resources/js/app.js"></script>
+	
+	<script src="home/HomeController.js"></script>
+
+	
+	<!-- blog related js files -->
+	<script src="blog/BlogController.js"></script>
+	<script src="blog/BlogService.js"></script>
+	
+	<!-- forum related js files -->
+	<script src="forum/ForumController.js"></script>
+	<script src="forum/ForumService.js"></script>
+	
+	
+	<!-- job related js files -->
+	<script src="job/JobController.js"></script>
+	<script src="job/JobService.js"></script>
+	
+
+	
+</body>
+</html>

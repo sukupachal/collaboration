@@ -1,0 +1,38 @@
+<div id="create-forum">
+	<div class="container">
+		<div>
+			<div>
+<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+<div ng-show='ctrl.forum.errorMessage!=""'>
+<div>Error :
+		{{ctrl.forum.errorMessage}}</div>
+</div>
+<fieldset>
+	<legend>Create Forum</legend>
+	<div>
+<form ng-submit="ctrl.submit()" name="myForm" >
+<div>
+<input type="text" name="name" required pattern=".{5,50}"
+	placeholder="Name of the Forum" ng-model="ctrl.forum.forumName">
+</div>
+
+
+
+<div class="one">
+<textarea type="text" name="forumDescription" required pattern=".{5,25}"
+placeholder="forumDescription ..." ng-model="ctrl.forum.forumDescription" ></textarea>
+</div>
+
+
+
+<div>
+<input type="submit" class="btn btn-info floatright" value="submit">
+</div>
+</form>
+</div>
+</fieldset>
+</div>
+			</div>
+		</div>
+	</div>
+</div>

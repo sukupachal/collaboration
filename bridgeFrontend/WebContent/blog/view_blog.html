@@ -1,0 +1,34 @@
+<div>
+   <div class="container">
+   <div class="row">
+   <div class="col-md-8">
+   <h1><a style="color: #efefef; text-decoration: none;">{{selectedBlog.blogTitle}}</a></h1>
+<h4>Written By : {{selectedBlog.userId}} &nbsp;&nbsp;   On : {{selectedBlog.blogDate | date}}</h4>
+ </div>
+ </div>
+<div class="row">
+ <div>
+  <div>
+   <h3><i class="fa fa-cube">{{selectedBlog.blogTitle}}</i></h3>
+       <p>{{selectedBlog.blogContent}}</p>
+       <p>
+         <strong>Best regards</strong><br>
+         <small>{{selectedBlog.userId}}</small>
+       </p>
+     </div><!-- /blog-area -->
+<div class="col-md-8 like-blog" ng-hide="currentUser==''">
+<div>
+	<button type="button" class="btn-more forum-like-style"
+	ng-click="ctrl.likeBlog(selectedBlog, selectedBlog.blogId)">
+<i class="fa fa-thumbs-up" aria-hidden="true">&nbsp;Like&nbsp;&nbsp;<span>{{selectedBlog.blogCountLike}}</span></i>
+	</button>
+</div>
+        </div>
+          </div><!-- /col-md-8 -->
+          
+          
+          </div><!-- /col-md-4 -->
+
+        </div>
+      </div>
+    </div>

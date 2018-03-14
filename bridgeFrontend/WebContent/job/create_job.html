@@ -1,0 +1,30 @@
+<div id="create-job">
+	<div class="container">
+		<div>
+			<div>
+<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+<div ng-show='ctrl.job.errorMessage!=""'>
+<div>Error :
+		{{ctrl.job.errorMessage}}</div>
+</div>
+<fieldset>
+	<legend>Create Job</legend>
+	<div>
+<form ng-submit="ctrl.submit()" name="myForm" >
+<div>
+<input type="text" name="jobProfile" required pattern=".{5,50}"
+	placeholder="Job Profile" ng-model="ctrl.job.jobProfile">
+</div>
+
+
+<div>
+<input type="submit" class="btn btn-info floatright" value="submit">
+</div>
+</form>
+</div>
+</fieldset>
+</div>
+			</div>
+		</div>
+	</div>
+</div>

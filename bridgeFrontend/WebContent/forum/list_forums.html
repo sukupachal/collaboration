@@ -1,0 +1,30 @@
+<!-- all-forum-view -->
+
+<div>
+	<div class="container">
+	<div>
+	
+	<div class="col-md-4" ng-repeat="forum in ctrl.forums">
+	<div>
+	<div>
+	<h3>{{forum.forumName}}</h3>
+	<p>Written By : {{forum.userId}}</p>
+	<div>
+	
+	
+<input type="button" class="btn btn-info floatright"
+	ng-click="ctrl.getSelectedForum(forum.forumId)" 
+      value="Know More..">
+      
+
+	</div>
+	</div>
+	<div>
+	<h4><a><span><i class="fa fa-rss" aria-hidden="true"></i></span>{{forum.forumName}}</a></h4>
+<ul style="text-align: center;">
+<li><a><i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;{{forum.forumUserCount}}</a></li>
+		</ul>
+		</div>
+		</div>
+		</div>
+		</div>
