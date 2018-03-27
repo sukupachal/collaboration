@@ -14,7 +14,7 @@
 			<div class="blog-all-grids">
 
 				<div>
-					<div class="col-md-4 blogs-grid" ng-repeat="friend in ctrl.friend">
+					<div class="col-md-4 blogs-grid" ng-repeat="friend in ctrl.friends">
 
 						<div class="blog-all">
 							<div class="blog-all-sub frame">
@@ -57,21 +57,23 @@
 
 			<div>
 
-				<div class="col-md-4 blogs-grid" ng-repeat="friend in ctrl.friend">
-				<div	ng-hide="friend.status!='N'">
+				<div class="col-md-4 blogs-grid" ng-repeat="friend in ctrl.newFriendRequests">
+				<div	>
 
 
 					<div class="friend-all">
 						<div class="friend-all-sub frame">
 							<br>
-							<h3>{{friend.userId}}</h3>
+							<h3>{{friend.userId}}</h3> 
+							<h3>{{friend.friendId}}</h3>
+							
 
 
 
 						</div>
 					</div>
 					<input type="button" class="btn btn-info btn-more"
-						ng-click="ctrl.acceptFriend(friend, friend.friendId)"
+						ng-click="ctrl.acceptFriend(friend, friend.userId)"
 						value="acceptFriend">
 						</div>
 				</div>

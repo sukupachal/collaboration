@@ -14,7 +14,7 @@ app.controller('FriendController', [ 'FriendService', 'UserService', '$scope',
 				status : ''
 			};
 			self.friends = [];
-
+			self.newFriendRequests = [];
 			self.user = {
 					errorCode: '',
 					errorMessage: '',
@@ -78,6 +78,24 @@ app.controller('FriendController', [ 'FriendService', 'UserService', '$scope',
 						}
 					);
 			};
+			self.getNewFriendRequests = function() {
+				console.log("--> getMyFriendRequests");
+				var currentUser = $rootScope.currentUser
+				if (typeof currentUser == 'undefined') {
+					alert("Please Sign in to check Friend List...")
+					console.log('User not logged in , to check Friend List...');
+					$location.path('/login');
+				};
+				FriendService.getNewFriendRequests().then(
+						function(d) {
+							self.newFriendRequests = d;
+							console.log("Got the Friendlist.");
+						},
+						function(errResponse) {
+							console.error("Error while fetching Friends.");
+						}
+					);
+			};
 			
 			self.updateFriendRequest = function(friend, id) {
 				console.log("--> updateFriendRequest");
@@ -96,8 +114,10 @@ app.controller('FriendController', [ 'FriendService', 'UserService', '$scope',
 								.acceptFriend(friend, id)
 								.then(function(d) {
 									self.friend = d;
+									self.getMyFriends();
 									alert('Friend request accepted successfully...');
 									self.getNewFriendRequests();
+									$location.path('/friend');
 								},
 								function(errResponse) {
 									console.error("Error while updating friend.");
@@ -132,5 +152,7 @@ app.controller('FriendController', [ 'FriendService', 'UserService', '$scope',
 			
 			self.fetchAllUsers();
 			self.getMyFriends();
+			self.getNewFriendRequests();
+			
 			
 		} ]);

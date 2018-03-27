@@ -27,6 +27,20 @@ app
 													});
 								},
 								
+								getNewFriendRequests : function() {
+									return $http
+											.get(BASE_URL + '/newFriendRequests')
+											.then(
+													function(response) {
+														return response.data;
+													},
+													function(errResponse) {
+														console
+																.error("-->updateFriendRequest : Error while fetching friends.");
+														return $q
+																.reject(errResponse);
+													});
+								},
 								
 								unFriend : function(friend, id) {
 									console

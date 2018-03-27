@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Demo - </title>
+<title>Bridge </title>
 <link rel="icon" href="resources/img/binder.png">
 
 <!-- Bootstrap, Font Awesome and jQuery css -->
@@ -33,6 +33,7 @@
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
+			
 			
 			<nav class="navbar navbar-inverse">
 		<div class="container-fluid" ng-controller="UserController as ctrl">
@@ -108,11 +109,7 @@
 				<li ng-show="currentUser.role!='ADMIN' && currentUser.role!='ROLE_USER'"><a href="#/register">Are you a new User ?</a></li>
 				
 				
-				
-  
-   
-				
-                <li ng-hide="currentUser==''" >  
+	  <li ng-hide="currentUser==''" >  
 				
 								
 								  <li ng-show="currentUser.role!='ADMIN' && currentUser.role!='ROLE_USER'"><a href="#/login" ng-show="!$curen.isUserLoggedIn">sign in</a></li> 
@@ -131,8 +128,10 @@
 				<li>
 			</ul>
 		</div>
+		
 	</nav>
-	
+
+
 			
 				
 			
