@@ -19,13 +19,14 @@ import com.niit.bridge.model.Blog;
 import com.niit.bridge.model.BlogComment;
 import com.niit.bridge.model.Forum;
 import com.niit.bridge.model.ForumComment;
+import com.niit.bridge.model.Friend;
 import com.niit.bridge.model.Job;
 import com.niit.bridge.model.JobApplication;
 import com.niit.bridge.model.UserDetails;
 
 
 @Configuration
-@ComponentScan("com.niit.collaborationback")
+@ComponentScan("com.niit.bridge")
 @EnableTransactionManagement
 public class ApplicationContextConfig {
 	@Bean(name="dataSource")
@@ -61,6 +62,7 @@ public class ApplicationContextConfig {
         sessionBuilder.addAnnotatedClass(Job.class);
 		sessionBuilder.addAnnotatedClass(Forum.class);	
 		sessionBuilder.addAnnotatedClass(ForumComment.class);
+		sessionBuilder.addAnnotatedClass(Friend.class);
 			
 		/*sessionBuilder.addAnnotatedClass(Friend.class);	
 		sessionBuilder.addAnnotatedClass(FriendRequest.class);*/
