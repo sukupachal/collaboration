@@ -52,7 +52,10 @@ public class FriendDaoImpl implements FriendDao{
 	@Transactional
 	public boolean update(Friend friend) {
 		try {
-			sessionFactory.getCurrentSession().update(friend);
+			Session s=getSession();
+			s.update(friend);
+			s.flush();
+			s.close();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,7 +65,7 @@ public class FriendDaoImpl implements FriendDao{
 	
 	@Transactional
 	public Friend get(String userId, String friendId) {
-		String hql = "from Friend where userId = '" + userId + "' and friendId = '" + friendId + "'";
+		String hql = "from Friend where userId = '" + friendId + "' and friendId = '" + userId + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		@SuppressWarnings("unchecked")
@@ -78,7 +81,7 @@ public class FriendDaoImpl implements FriendDao{
 	
 	@Transactional
 	public List<Friend> getMyFriends(String userId) {
-		String hql = "from Friend where userId = '" + userId + "' and status = 'A'";
+		String hql = "from Friend where ( userId = '" + userId + "' and status = 'A' ) or ( friendId = '" + userId + "' and status = 'A' )";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		@SuppressWarnings("unchecked")
@@ -91,7 +94,7 @@ public class FriendDaoImpl implements FriendDao{
 			
 		@Transactional
 	public List<Friend> getNewFriendRequests(String friendId){
-			String hql = "from Friend where userId = '" + friendId + "' and status = 'N'";
+			String hql = "from Friend where friendId = '" + friendId + "' and status = 'N'";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			@SuppressWarnings("unchecked")

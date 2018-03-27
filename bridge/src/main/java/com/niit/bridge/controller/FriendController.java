@@ -27,8 +27,9 @@ public class FriendController {
 	
 	@GetMapping(value = "/myFriends")
 	public ResponseEntity<List<Friend>> myFriends(HttpSession session) {
-		System.out.println("**********Starting of myFriends() method");
+		System.out.println("**********Starting of myFriends()vngngb method");
 		UserDetails loggedInUser = (UserDetails) session.getAttribute("loggedInUser");
+		System.out.println("nnn0"+loggedInUser);
 		List<Friend> myFriends = friendDao.getMyFriends(loggedInUser.getUserId());
 		System.out.println("**********End of myFriends() method");
 		return new ResponseEntity<List<Friend>> (myFriends, HttpStatus.OK);
@@ -90,14 +91,18 @@ public class FriendController {
 	}
 	
 	
-	@PutMapping(value = "/acceptFriend/{friendId}")			
+	@PutMapping(value = "user/acceptFriend/{friendId}")			
 	public ResponseEntity<Friend> acceptFriendRequest(@PathVariable("friendId") String friendId, HttpSession session) {
 		System.out.println("**********Starting of acceptFriendRequest() method");
 		UserDetails loggedInUser = (UserDetails) session.getAttribute("loggedInUser");
 		String uid=loggedInUser.getUserId();
+		System.out.println("iiiiii" + uid );
 		Friend friend = friendDao.get(uid, friendId);
+		System.out.println("ppppp "+ friend);
 		friend.setUserId(loggedInUser.getUserId());
-		friend.setFriendId(friendId);
+		System.out.println("bbbbbb");
+		friend.setFriendId(uid);
+		friend.setUserId(friendId);
 		friend.setStatus("A");	// N = New, A = Accepted, R = Rejected, U = Unfriend 
 		friendDao.update(friend);
 		System.out.println("**********End of acceptFriendRequest() method");
@@ -108,13 +113,13 @@ public class FriendController {
 @GetMapping(value = "/newFriendRequests")	
 	
 	public ResponseEntity<List<Friend>> newFriendRequests(HttpSession session) {
-		System.out.println("**********Starting of listJobs() method.");
+		System.out.println("**********Starting of listFriends() method.");
 		UserDetails loggedInUser = (UserDetails) session.getAttribute("loggedInUser");
 		List<Friend> friend = friendDao.getNewFriendRequests(loggedInUser.getUserId());
 		if(friend.isEmpty()) {
 			return new ResponseEntity<List<Friend>>(HttpStatus.NO_CONTENT);
 		}
-		System.out.println("**********End of listUsers() method.");
+		System.out.println("**********End of listFriends() method.");
 		return new ResponseEntity<List<Friend>>(friend, HttpStatus.OK);
 	}
 

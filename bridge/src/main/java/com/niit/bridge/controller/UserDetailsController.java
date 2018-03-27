@@ -94,6 +94,7 @@ public class UserDetailsController {
 		}
 		else {
 			session.setAttribute("loggedInUser", users);
+			System.out.println("logged session set ");
 			session.setAttribute("loggedInUserID", users.getUserId());
 		}
 		return new ResponseEntity<UserDetails>(users, HttpStatus.OK);
