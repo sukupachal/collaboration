@@ -34,58 +34,106 @@
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			
-			<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-				<nav id="link-effect-12">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="#/" class="a-hover"><span>Home</span></a></li>
-						
-																
-											
-						<!-- <<<<<<<<<< Blog >>>>>>>>>> -->
-						
-						<li ng-show="currentUser==''"><a href="#/list_blog" class="a-hover"><span>Blog</span></a></li>
-						
-						<li ng-hide="currentUser==''"><a class="dropdown-toggle a-hover" data-toggle="dropdown">Blog
-							<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#/create_blog"><span>Add New Blog</span></a></li>
-								<li><a href="#/list_blog"><span>Show All Blogs</span></a></li>
-							</ul>
-						</li>
-						
-												
-												
-			
-			<!-- <<<<<<<<<< Forum >>>>>>>>>> -->
-						
-			<li ng-show="currentUser==''"><a href="#/list_forum" class="a-hover"><span>Forum</span></a></li>
- 			<li ng-hide="currentUser==''"><a class="dropdown-toggle a-hover" data-toggle="dropdown">Forum
-							<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#/create_forum"><span>Add New Forum</span></a></li>
-								<li><a href="#/list_forums"><span>Show All Forums</span></a></li>
-							</ul>
-						</li>
-						
-				
-				<!-- <<<<<<<<<< Job >>>>>>>>>> -->
-						
-			<li ng-show="currentUser==''"><a href="#/list_job" class="a-hover"><span>Job</span></a></li>
- 			<li ng-hide="currentUser==''"><a class="dropdown-toggle a-hover" data-toggle="dropdown">Job
-							<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#/create_job"><span>Add New Job</span></a></li>
-								<li><a href="#/list_jobs"><span>Show All Jobs</span></a></li>
-							</ul>
-						</li>
-				
-				
-												
-								</ul>
-				</nav>
+			<nav class="navbar navbar-inverse">
+		<div class="container-fluid" ng-controller="UserController as ctrl">
+		
+		
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">MyWebSite</a>
 			</div>
-												
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+
+
+				<!-- <li><a href="#/list_blog">Blog</a></li> -->
+				 <li ng-show="currentUser=='undefined'"><a href="#/blog" class="a-hover"><span>Blog</span></a></li>   
+						
+						<li ng-hide="currentUser==''">
+							<a class="dropdown-toggle a-hover" data-toggle="dropdown">Blog<span class="caret"></span></a>
+							<ul class="dropdown-menu">
 							
+							<li ng-show="currentUser.role=='ADMIN'"><a href="#/list_newblogs"><span>Approve Blogs</span></a></li>
+								<li><a href="#/create_blog"><span>Add new Blog</span></a></li>
+								<li><a href="#/list_blogs"><span>Blog List</span></a></li>
+								
+							</ul>
+						</li>
+						
+				  <!-- <li><a href="#/forum">Forum</a></li>  -->
+				  <li ng-show="currentUser==''"><a href="#/forum" class="a-hover"><span>Forum</span></a></li>  
+						 
+						<li ng-hide="currentUser==''">
+							<a class="dropdown-toggle a-hover" data-toggle="dropdown">Forum<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#/create_forum"><span>Create Forum</span></a></li>
+								<li><a href="#/list_forums"><span>All Forums</span></a></li>
+								
+							</ul>
+						</li>
+				 <!--  <li><a href="#/job">Job</a></li>  -->
+				 <li ng-show="currentUser==''"><a href="#/search_job" class="a-hover"><span>Job</span></a></li>  
+						
+						<li ng-hide="currentUser==''">
+							<a class="dropdown-toggle a-hover" data-toggle="dropdown">Job<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li ng-show="currentUser.role=='ADMIN'"><a href="#/job"><span>Post Job</span></a></li>
+								<li><a href="#/jobs"><span>Search Job</span></a></li>
+								<li><a href="#/view_applied_jobs"><span>Job Applied</span></a></li>
+							</ul>
+						</li>
+
+
+				<!--  <li><a href="#/friend">My Friends</a></li> -->
+				 <li ng-show="currentUser==''"><a href="#/friend" class="a-hover"><span>Friend</span></a></li>  
+						 
+						<li ng-hide="currentUser==''">
+						
+							<a class="dropdown-toggle a-hover" data-toggle="dropdown">Friend<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#/friend"><span>Friend</span></a></li>
+				</ul>
+						</li>
+				
+				 
+				 
+				
+
+				<li><a href="#/myprofile">My Profile</a></li>
+				
+				<li ng-show="currentUser.role=='ADMIN'"><a href="#/list_users"><span>All Users</span></a></li>
+				 
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+			<li   ng-show="currentUser!=''" class="navbar-brand">  Welcome {{currentUser.name}} </li>
+				<li ng-show="currentUser.role!='ADMIN' && currentUser.role!='ROLE_USER'"><a href="#/register">Are you a new User ?</a></li>
+				
+				
+				
+  
+   
+				
+                <li ng-hide="currentUser==''" >  
+				
+								
+								  <li ng-show="currentUser.role!='ADMIN' && currentUser.role!='ROLE_USER'"><a href="#/login" ng-show="!$curen.isUserLoggedIn">sign in</a></li> 
+								 <li ng-show="currentUser.role=='ADMIN' || currentUser.role=='ROLE_USER'"><a ng-click="ctrl.logout()">Logout
+									 </a></li>
+				                  
+				                   </ul>
+				                   
+				                   
+				                   
+							
+						
+				
+				<!-- data-toggle="modal" data-target="#login-modal"  (after login") -->
+				
+				<li>
+			</ul>
+		</div>
+	</nav>
+	
+			
 				
 			
 			<!-- /.navbar-collapse -->
@@ -144,6 +192,16 @@
 	<!-- job related js files -->
 	<script src="job/JobController.js"></script>
 	<script src="job/JobService.js"></script>
+	
+	
+	<!-- user related js files -->
+	<script src="user/UserController.js"></script>
+	<script src="user/UserService.js"></script>
+	
+	<!-- friend related js files -->
+	<script src="friend/FriendController.js"></script>
+	<script src="friend/FriendService.js"></script>
+	
 	
 
 	

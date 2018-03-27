@@ -1,4 +1,4 @@
-var app = angular.module('myApp', [ 'ngRoute', 'ngCookies' ]);		//we need to include 'ngRoute' and 'ngCookies' as dependency in the application module.
+var app = angular.module('myApp', [ 'ngRoute' ]);		//we need to include 'ngRoute' and 'ngCookies' as dependency in the application module.
 
 app.config(function($routeProvider) {		//We can use config() block to inject only providers and constants in our AngularJS application.
 										//The providers basically create new instances, but only once for each provider.
@@ -58,22 +58,75 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
 	 */
 
 	.when('/create_job', {
-		templateUrl : 'forum/create_job.html',
+		templateUrl : 'job/create_job.html',
 		controller : 'JobController as ctrl'
 	})
 
 	.when('/list_job', {
-		templateUrl : 'forum/list_jobs.html',
+		templateUrl : 'job/list_jobs.html',
 		controller : 'JobController as ctrl'
 	})
 
 	.when('/view_job', {
-		templateUrl : 'forum/view_job.html',
+		templateUrl : 'job/view_job.html',
 		controller : 'JobController as ctrl'
 	})
 
 
+	
 		
+		/**
+	 * User related mapping
+	 */
+
+	.when('/create_user', {
+		templateUrl : 'user/create_user.html',
+		controller : 'UserController as ctrl'
+	})
+
+	.when('/list_user', {
+		templateUrl : 'user/list_users.html',
+		controller : 'UserController as ctrl'
+	})
+
+	.when('/view_user', {
+		templateUrl : 'user/view_user.html',
+		controller : 'UserController as ctrl'
+	})
+	.when('/login', {
+		templateUrl : 'user/login.html',
+		controller : 'UserController as ctrl'
+	})
+	.when('/myprofile', {
+    templateUrl : 'myprofile/myprofile.html',
+    controller : 'UserController as ctrl'
+   
+  })
+  
+	
+	
+		/**
+	 * Friend related mapping
+	 */
+
+	.when('/friend', {
+		templateUrl : 'friend/friend.html',
+		controller : 'FriendController as ctrl'
+	})
+	.when('/search_friend', {
+		templateUrl : 'friend/search_friend.html',
+		controller : 'FriendController as ctrl'
+	})
+	.when('/view_friend', {
+		templateUrl : 'friend/view_friend.html',
+		controller : 'FriendController as ctrl'
+	})
+
+
+
+	
+	
+	
 	/**
 	 * If anything goes wrong then this mapping will handle the request...
 	 */
@@ -83,18 +136,17 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
 	});
 });
 
-app.run(function($rootScope, $location, $cookieStore, $http) {		//run() block gives us facility to inject any instance and constants in our application.
+app.run(function($rootScope, $location) {		//run() block gives us facility to inject any instance and constants in our application.
 	console.log("--> app : entered app.run");
-/*
+
 	$rootScope.$on('$locationChangeStart', function(event, next, current) {		//The $locationChangeStart event can be used to prevent a location change going forward.
 		console.log("--> $rootScope.$on <--");
 		// redirect to login page if try to access any other page rather than the restricted pages
 		var restrictedPage = $.inArray($location.path(), [ '/', 
 		                                                   '/login', 
 		                                                   '/logout', 
-		                                                   '/register',
-
-'/list_blog', 
+		                                                   '/register', 
+		                                                   '/list_blog', 
 		                                                   '/view_blog', 
 		                                                   '/about', 
 		                                                   '/list_event',
@@ -107,7 +159,7 @@ app.run(function($rootScope, $location, $cookieStore, $http) {		//run() block gi
 		                                                   '/myprofile']) === -1;
 
 		console.log("restrictedPage : " + restrictedPage);
-		var loggedIn = $rootScope.currentUser.id;		//taking currentUser.id in $rootScope as 'loggedIn' so that we can use it throughout the session. 
+		var loggedIn = $rootScope.currentUser;		//taking currentUser.id in $rootScope as 'loggedIn' so that we can use it throughout the session. 
 
 		console.log("loggedIn : " + loggedIn);
 		if (restrictedPage && !loggedIn) {
@@ -115,12 +167,12 @@ app.run(function($rootScope, $location, $cookieStore, $http) {		//run() block gi
 			$location.path('/login');
 		}
 	});
-*/
+
 
 	// keep user logged in after page refresh...
-	/*
-	 * $rootScope.currentUser = $cookieStore.get('currentUser') || {}; if
-	 * ($rootScope.currentUser) { $http.defaults.header.common['Authorization'] =
-	 * 'Basic' + $rootScope.currentUser; }
-	 */
+	
+	  /*$rootScope.currentUser = $cookieStore.get('currentUser') || {}; if
+	  ($rootScope.currentUser) { $http.defaults.header.common['Authorization'] =
+	  'Basic' + $rootScope.currentUser; }*/
+	 
 });  // app.run

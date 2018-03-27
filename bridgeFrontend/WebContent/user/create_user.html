@@ -1,0 +1,34 @@
+<div id="create-user">
+	<div class="container">
+		<div>
+			<div>
+<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+<div ng-show='ctrl.user.errorMessage!=""'>
+<div>Error :
+		{{ctrl.user.errorMessage}}</div>
+</div>
+<fieldset>
+	<legend>Create User</legend>
+	<div>
+<form ng-submit="ctrl.submit()" name="myForm" >
+<div>
+<input type="text" name="name" required pattern=".{5,50}"
+	placeholder="name of the user" ng-model="ctrl.user.name">
+</div>
+
+
+<div class="one">
+<textarea type="text" name="userId" required pattern=".{5,25}"
+placeholder="Id of the user ..." ng-model="ctrl.user.userId" ></textarea>
+</div>
+<div>
+<input type="submit" class="btn btn-info floatright" value="submit">
+</div>
+</form>
+</div>
+</fieldset>
+</div>
+			</div>
+		</div>
+	</div>
+</div>

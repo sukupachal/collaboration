@@ -1,0 +1,30 @@
+<!-- all-user-view -->
+
+<div>
+	<div class="container">
+	<div>
+	
+	<div class="col-md-4" ng-repeat="user in ctrl.users">
+	<div>
+	<div>
+	<h3>{{user.name}}</h3>
+	<p>{{user.userId}}</p>
+	<div>
+	
+	
+<input type="button" class="btn btn-info floatright"
+	ng-click="ctrl.getSelectedUser(user.userId)" 
+      value="Know More..">
+      
+
+	</div>
+	</div>
+	<div>
+	<h4><a><span><i class="fa fa-rss" aria-hidden="true"></i></span>{{user.name}}</a></h4>
+<ul style="text-align: center;">
+
+		</ul>
+		</div>
+		</div>
+		</div>
+		</div>
