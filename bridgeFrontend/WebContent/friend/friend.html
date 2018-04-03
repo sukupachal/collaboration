@@ -19,7 +19,8 @@
 						<div class="blog-all">
 							<div class="blog-all-sub frame">
 								<br>
-								<h3>{{friend.friendId}}</h3>
+								<h3 ng-show='currentUser.userId!=friend.userId'>{{friend.userId}}</h3> 
+								<h3 ng-show='currentUser.userId==friend.userId'>{{friend.friendId}}</h3>
 
 								<h6>Active : {{friend.isOnline}}</h6>
 
@@ -57,7 +58,7 @@
 
 			<div>
 
-				<div class="col-md-4 blogs-grid" ng-repeat="friend in ctrl.newFriendRequests">
+				<div class="col-md-4 blogs-grid" ng-repeat="friend in $rootScope.newFriendRequests">
 				<div	>
 
 
@@ -65,7 +66,7 @@
 						<div class="friend-all-sub frame">
 							<br>
 							<h3>{{friend.userId}}</h3> 
-							<h3>{{friend.friendId}}</h3>
+							
 							
 
 

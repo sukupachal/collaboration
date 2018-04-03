@@ -89,6 +89,7 @@ app.controller('FriendController', [ 'FriendService', 'UserService', '$scope',
 				FriendService.getNewFriendRequests().then(
 						function(d) {
 							self.newFriendRequests = d;
+							$rootScope.newFriendRequests=self.newFriendRequests;
 							console.log("Got the Friendlist.");
 						},
 						function(errResponse) {
@@ -115,9 +116,10 @@ app.controller('FriendController', [ 'FriendService', 'UserService', '$scope',
 								.then(function(d) {
 									self.friend = d;
 									self.getMyFriends();
-									alert('Friend request accepted successfully...');
+									alert('Friend request accepted successfully... nnnn');
 									self.getNewFriendRequests();
 									$location.path('/friend');
+									self.getMyFriends();
 								},
 								function(errResponse) {
 									console.error("Error while updating friend.");

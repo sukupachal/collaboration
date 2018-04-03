@@ -22,7 +22,7 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
 		controller : 'BlogController as ctrl'
 	})
 
-	.when('/list_blog', {
+	.when('/list_blogs', {
 		templateUrl : 'blog/list_blogs.html',
 		controller : 'BlogController as ctrl'
 	})
@@ -146,18 +146,18 @@ app.run(function($rootScope, $location) {		//run() block gives us facility to in
 		                                                   '/login', 
 		                                                   '/logout', 
 		                                                   '/register', 
-		                                                   '/list_blog', 
+		                                                   '/list_blogs', 
 		                                                   '/view_blog', 
 		                                                   '/about', 
 		                                                   '/list_event',
 		                                                   '/view_event', 
-		                                                   '/list_forum', 
+		                                                   '/list_forum',
 		                                                   '/view_forum', 
 		                                                   '/search_job', 
 		                                                   '/view_job_details',
 		                                                   '/chat',
 		                                                   '/myprofile']) === -1;
-
+		console.log("location "+$location.path());
 		console.log("restrictedPage : " + restrictedPage);
 		var loggedIn = $rootScope.currentUser;		//taking currentUser.id in $rootScope as 'loggedIn' so that we can use it throughout the session. 
 

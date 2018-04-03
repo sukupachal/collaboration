@@ -1,38 +1,29 @@
 <div id="create-forum">
-	<div class="container">
-		<div>
-			<div>
-<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-<div ng-show='ctrl.forum.errorMessage!=""'>
-<div>Error :
-		{{ctrl.forum.errorMessage}}</div>
-</div>
-<fieldset>
-	<legend>Create Forum</legend>
-	<div>
-<form ng-submit="ctrl.submit()" name="myForm" >
-<div>
-<input type="text" name="name" required pattern=".{5,50}"
-	placeholder="Name of the Forum" ng-model="ctrl.forum.forumName">
-</div>
-
-
-
-<div class="one">
-<textarea type="text" name="forumDescription" required pattern=".{5,25}"
-placeholder="forumDescription ..." ng-model="ctrl.forum.forumDescription" ></textarea>
-</div>
-
-
-
-<div>
-<input type="submit" class="btn btn-info floatright" value="submit">
-</div>
-</form>
-</div>
-</fieldset>
-</div>
+		<div class="container">
+			<div class="form-area">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+						<fieldset>
+							<legend>Create Forum</legend>
+							<div class="form-inner">
+								<form name="" action="" method="POST">
+									<div class="one">
+										<input type="text" name="title" required placeholder="Title of the Forum">
+									</div>
+									<div class="one">
+										<input type="text" name="reason" required placeholder="Why this forum ?" />
+									</div>
+									<div class="one">
+										<textarea type="text" name="content" required placeholder="Content of the Forum..."></textarea>
+									</div>
+									<div>
+										<input type="submit" class="btn btn-info kp-button floatright"	value="submit">
+									</div>
+								</form>
+							</div>
+						</fieldset>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
