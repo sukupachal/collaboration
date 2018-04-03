@@ -45,7 +45,7 @@ public class ForumController {
 	
 	
 	@RequestMapping(value="/forum/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Forum> updateBlog(@PathVariable("id")int id, @RequestBody Forum forum){
+	public ResponseEntity<Forum> updateForum(@PathVariable("id")int id, @RequestBody Forum forum){
 		if(forumDao.getForumByForumId(id)== null){
 			forum=new Forum();
 			forum.setErrorMessage("No blog exist with id : "+forum.getForumId());
