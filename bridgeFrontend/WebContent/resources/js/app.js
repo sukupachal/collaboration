@@ -33,7 +33,13 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
 	})
 
 	
-			
+	.when('/list_newblogs', {
+		templateUrl : 'blog/list_newblogs.html',
+		controller : 'BlogController as ctrl'
+	})
+	
+	
+	
 	/**
 	 * Forum related mapping
 	 */
