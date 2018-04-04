@@ -20,9 +20,9 @@ import com.niit.bridge.model.ForumComment;
 public class ForumCommentController {
 	@Autowired
 	ForumCommentDao forumCommentDao;
-	@GetMapping(value = "/forumComments")
-	public ResponseEntity<List<ForumComment>> listForumComments() {
-		List<ForumComment> forumComment = forumCommentDao.list();
+	@GetMapping(value = "/forumComments/{id}")
+	public ResponseEntity<List<ForumComment>> listForumComments( @PathVariable("id") int id  ) {
+		List<ForumComment> forumComment = forumCommentDao.list(id);
 		if(forumComment.isEmpty()) {
 			return new ResponseEntity<List<ForumComment>>(HttpStatus.NO_CONTENT);
 		}
@@ -31,7 +31,10 @@ public class ForumCommentController {
 	
 	@PostMapping(value = "/forumComment/{id}")
 	public ResponseEntity<ForumComment> createForumComment(@RequestBody ForumComment forumComment) {
-		if(forumCommentDao.get(forumComment.getForumComment()) == null) {
+		
+		
+		if(forumCommentDao.get(forumComment.getForumCommentId()) == null) {
+			forumComment.setForumCommentDate(new java.util.Date(System.currentTimeMillis()));
 			forumCommentDao.save(forumComment);
 			return new ResponseEntity<ForumComment>(forumComment, HttpStatus.OK);
 		}
@@ -42,7 +45,7 @@ public class ForumCommentController {
 
 
 @PutMapping(value = "/forumComment/{id}")
-public ResponseEntity<ForumComment> updateForumComment(@PathVariable("id") String id, @RequestBody ForumComment forumComment) {
+public ResponseEntity<ForumComment> updateForumComment(@PathVariable("id") int id, @RequestBody ForumComment forumComment) {
 	if(forumCommentDao.get(id) == null) {
 		forumComment = new ForumComment();
 		forumComment.setErrorMessage("No forumComment exist with id : " +forumComment.getForumId());
@@ -53,7 +56,7 @@ public ResponseEntity<ForumComment> updateForumComment(@PathVariable("id") Strin
 }
 
 @DeleteMapping(value = "/forumComment/{id}")
-public ResponseEntity<ForumComment> deleteForumComment(@PathVariable("id") String id) {
+public ResponseEntity<ForumComment> deleteForumComment(@PathVariable("id") int id) {
 	ForumComment forumComment = forumCommentDao.get(id);
 	if(forumComment == null) {
 		forumComment = new ForumComment();
@@ -64,8 +67,8 @@ public ResponseEntity<ForumComment> deleteForumComment(@PathVariable("id") Strin
 	return new ResponseEntity<ForumComment>(HttpStatus.OK);		
 }
 
-@GetMapping(value = "/forumComment/{id}")
-public ResponseEntity<ForumComment> getForumComment(@PathVariable("id") String id) {
+/*@GetMapping(value = "/forumComments/{id}")
+public ResponseEntity<ForumComment> getForumComment(@PathVariable("id") int id) {
 	ForumComment forumComment = forumCommentDao.get(id);
 	if(forumComment == null) {
 		forumComment = new ForumComment();
@@ -73,6 +76,6 @@ public ResponseEntity<ForumComment> getForumComment(@PathVariable("id") String i
 		return new ResponseEntity<ForumComment>(forumComment, HttpStatus.NOT_FOUND);
 	}
 	return new ResponseEntity<ForumComment>(forumComment, HttpStatus.OK);
-}
+}*/
 
 }

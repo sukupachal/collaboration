@@ -80,9 +80,9 @@ public boolean delete(ForumComment forumComment) {
 	}
 	
 	@Transactional
-	public ForumComment get(String id) {
+	public ForumComment get(int id) {
 		// TODO Auto-generated method stub
-		String hql = "from ForumComment where id = " + "'" + id + "'";
+		String hql = "from ForumComment where forumCommentId = " + id ;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		@SuppressWarnings("unchecked")
@@ -98,9 +98,9 @@ public boolean delete(ForumComment forumComment) {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<ForumComment> list() {
+	public List<ForumComment> list(int id) {
 		// TODO Auto-generated method stub
-		String hql = "from ForumComment";
+		String hql = "from ForumComment  where forumId="+id;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		return query.list();
 	}	
