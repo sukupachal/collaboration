@@ -5,7 +5,7 @@
 	<div>
 	
 	<div class="col-md-4" ng-repeat="forum in ctrl.forums">
-	<div>
+	<div ng-show="forum.forumStatus=='A'">
 	<div>
 	<h3>{{forum.forumName}}</h3>
 	<p>Written By : {{forum.userId}}</p>
@@ -15,6 +15,8 @@
 <input type="button" class="btn btn-info floatright"
 	ng-click="ctrl.getSelectedForum(forum.forumId)" 
       value="Know More..">
+      
+      
       
 
 	</div>

@@ -59,6 +59,12 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
 		controller : 'ForumController as ctrl'
 	})
 	
+	
+	.when('/list_newforums', {
+		templateUrl : 'forum/list_newforums.html',
+		controller : 'ForumController as ctrl'
+	})
+	
 		/**
 	 * Job related mapping
 	 */
@@ -90,7 +96,7 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
 		controller : 'UserController as ctrl'
 	})
 
-	.when('/list_user', {
+	.when('/list_users', {
 		templateUrl : 'user/list_users.html',
 		controller : 'UserController as ctrl'
 	})
@@ -104,7 +110,7 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
 		controller : 'UserController as ctrl'
 	})
 	.when('/myprofile', {
-    templateUrl : 'myprofile/myprofile.html',
+    templateUrl : 'user/myprofile.html',
     controller : 'UserController as ctrl'
    
   })

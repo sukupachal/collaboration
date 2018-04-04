@@ -127,7 +127,7 @@ app.controller('ForumController', [
 						alert('Accept Forum?');
 						//self.forum=d;
 						self.listforums();
-						$location.path('/forums');
+						$location.path('/list_newforums');
 						},
 						function(errResponse) 
 						{
