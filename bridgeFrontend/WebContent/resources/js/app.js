@@ -152,7 +152,7 @@ app.run(function($rootScope, $location) {		//run() block gives us facility to in
 		                                                   '/list_event',
 		                                                   '/view_event', 
 		                                                   '/list_forum',
-		                                                   '/view_forum', 
+		                                                    
 		                                                   '/search_job', 
 		                                                   '/view_job_details',
 		                                                   '/chat',

@@ -164,7 +164,7 @@ app.controller('ForumController', [
 				{
 					self.forumComments = d;
 							//calling getSelectedForum(id) method ...
-			
+					$rootScope.SelectedForumComments = self.forumComments;
 				},
 				function(errResponse) 
 				{
@@ -176,6 +176,7 @@ app.controller('ForumController', [
 			self.createForumComment = function(forumComment, id) {
 				console.log("-->ForumController : calling 'createForumComment' method.", self.forum);
 				forumComment.forumId = id;
+				
 				console.log("-->ForumController ForumId :" +forumComment.forumId);
 				ForumService.createForumComment(forumComment,id).then
 							(function(d) 
@@ -185,6 +186,8 @@ app.controller('ForumController', [
 								console.log('-->ForumController :', self.forumComment)
 								self.fetchAllForumComments(id);
 								self.resetComment();
+								$rootScope.forumComment = forumComment.userId;
+								
 							},
 							function(errResponse) {
 								console.error('Error while creating forumComment...');
@@ -211,16 +214,17 @@ app.controller('ForumController', [
 				console.log('submit a new Forum', self.forum);
 				self.forum =
 				{
-						forumId : '',
-						forumName : '',
-						forumDescription : '',
-						userId : '',
-						forumCreationDate : '',
-						forumStatus : '',
-						userName:'',
-						forumCommentCount:'',
-					    errorCode : '',
-					    errorMessage : ''
+						errorCode : '',
+          				errorMessage : '',
+          				forumId : '',
+          				forumName : '',
+          				forumDescription : '',
+          				userId : '',
+          				userName : '',
+          				forumCreationDate : '',
+          				forumStatus :'',
+          				forumCountComment : '',
+          				forumUserCount:''
 				};
 				$scope.myForm.$setPristine(); // reset form...
 			};
