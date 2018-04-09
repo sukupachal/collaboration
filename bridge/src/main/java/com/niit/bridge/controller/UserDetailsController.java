@@ -85,6 +85,21 @@ public class UserDetailsController {
 		return new ResponseEntity<UserDetails>(users, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value= "/user/logout",method=RequestMethod.GET)
+	public ResponseEntity<UserDetails>logout(HttpSession session){
+		
+			session.invalidate();
+			 
+			
+				return new ResponseEntity<UserDetails>(new UserDetails(), HttpStatus.OK);
+				
+		}
+		
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/user/authenticate/", method = RequestMethod.POST)
 	public ResponseEntity<UserDetails> UserAuthentication(@RequestBody UserDetails users, HttpSession session){
 		users = userDetailsDao.UserAuthentication(users.getUserId(), users.getPassword());

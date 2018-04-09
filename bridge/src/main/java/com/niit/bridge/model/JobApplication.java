@@ -16,27 +16,56 @@ public class JobApplication extends BaseDomain implements Serializable{
 	@SequenceGenerator(name="SEQ_GEN", sequenceName="SEQ_AUTO_JOB_APPLICATION_ID", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_GEN")
 
-	private int jobApplicationId;
-	private String UserId;
-	private int jobId;
+    private int jobApplicationId;
+	
+	private String userid;
+	
 	public int getJobApplicationId() {
 		return jobApplicationId;
 	}
+
 	public void setJobApplicationId(int jobApplicationId) {
 		this.jobApplicationId = jobApplicationId;
 	}
-	public String getUserId() {
-		return UserId;
+
+	public String getUserid() {
+		return userid;
 	}
-	public void setUserId(String userId) {
-		UserId = userId;
+
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
-	public int getJobId() {
-		return jobId;
+
+	public int getJobid() {
+		return Jobid;
 	}
-	public void setJobId(int jobId) {
-		this.jobId = jobId;
+
+	public void setJobid(int jobid) {
+		Jobid = jobid;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	private int Jobid;
 	
+	private String status;	// R = Reject, C = Call for Interview, S = Selected
+	
+	private String remarks;
+
+
 
 }

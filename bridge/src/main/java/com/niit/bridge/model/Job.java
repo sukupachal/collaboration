@@ -1,7 +1,7 @@
 package com.niit.bridge.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,48 +16,57 @@ public class Job extends BaseDomain implements Serializable{
 	@Id
 	@SequenceGenerator(name="SEQ_GEN", sequenceName="SEQ_AUTO_JOB_ID", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_GEN")
-
+	
 	private int jobId;
-	private String jobProfile;
-	private String forumComment;
-	private Date forumCommentDate;
-	private String userId;
+	private String companyName;
+	private String location;
 	public int getJobId() {
 		return jobId;
 	}
 	public void setJobId(int jobId) {
 		this.jobId = jobId;
 	}
-	public String getJobProfile() {
-		return jobProfile;
+	public String getCompanyName() {
+		return companyName;
 	}
-	public void setJobProfile(String jobProfile) {
-		this.jobProfile = jobProfile;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
-	public String getForumComment() {
-		return forumComment;
+	public String getLocation() {
+		return location;
 	}
-	public void setForumComment(String forumComment) {
-		this.forumComment = forumComment;
+	public void setLocation(String location) {
+		this.location = location;
 	}
-	public Date getForumCommentDate() {
-		return forumCommentDate;
+	public String getDescription() {
+		return description;
 	}
-	public void setForumCommentDate(Date forumCommentDate) {
-		this.forumCommentDate = forumCommentDate;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public String getUserId() {
-		return userId;
+	public Date getJobDate() {
+		return jobDate;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setJobDate(Date jobDate) {
+		this.jobDate = jobDate;
 	}
-	public String getUserName() {
-		return userName;
+	public String getStatus() {
+		return status;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setStatus(String status) {
+		this.status = status;
 	}
-	private String userName;
+	public int getNoOfApplicants() {
+		return noOfApplicants;
+	}
+	public void setNoOfApplicants(int noOfApplicants) {
+		this.noOfApplicants = noOfApplicants;
+	}
+	private String description;
+	private Date jobDate;
+	private String status;
+	private int noOfApplicants;
+	
 
+	
 }

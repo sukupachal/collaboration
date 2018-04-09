@@ -19,6 +19,13 @@ public class BlogComment extends BaseDomain implements Serializable{
 	private int blogCommentId;
 	private int blogId;
 	private String userId;
+	private String blogComment;
+	public String getBlogComment() {
+		return blogComment;
+	}
+	public void setBlogComment(String blogComment) {
+		this.blogComment = blogComment;
+	}
 	public int getBlogCommentId() {
 		return blogCommentId;
 	}
