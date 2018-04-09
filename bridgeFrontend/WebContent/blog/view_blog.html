@@ -13,19 +13,54 @@
   <div>
    <h3><i class="fa fa-cube">{{selectedBlog.blogTitle}}</i></h3>
        <p>{{selectedBlog.blogContent}}</p>
-       <p>
-         <strong>Best regards</strong><br>
+       <p><strong>Best regards</strong><br>
          <small>{{selectedBlog.userId}}</small>
        </p>
      </div><!-- /blog-area -->
-<div class="col-md-8 like-blog" ng-hide="currentUser==''">
-<div>
-	<button type="button" class="btn-more forum-like-style"
-	ng-click="ctrl.likeBlog(selectedBlog, selectedBlog.blogId)">
-<i class="fa fa-thumbs-up" aria-hidden="true">&nbsp;Like&nbsp;&nbsp;<span>{{selectedBlog.blogCountLike}}</span></i>
-	</button>
-</div>
-        </div>
+
+
+<!-- Middle Column -->
+    <div class="w3-col m9">
+    
+      
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"   ><br>
+        <img src="resources/images/male.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">{{selectedBlog.blogDate|date}}</span>
+        <h4>{{selectedBlog.userId}}</h4><br>
+        <hr class="w3-clear">
+        <h4>{{selectedBlog.blogTitle}}</h4>
+        <p>{{selectedBlog.blogContent}}</p>
+         <p class="author text-right">
+                <strong>Best regards</strong><br>
+                <small>{{selectedBlog.userId}}</small>
+              </p>
+        <div>
+       <li><a><i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;{{blog.blogCountLike}}</a></li>
+		</div>
+	
+      
+        <br>
+        
+        <form name="myForm" ">
+        <div class="one">
+        
+		<textarea  type="text" name="comment" class="form-control" required placeholder="Write your comment here..." ng-model="ctrl.blogComment.blogComment"></textarea>
+		</div>
+		<br>
+		<div>
+					
+		<button  type="button" ng-click="ctrl.createBlogComment(ctrl.blogComment, selectedBlog.blogId);"  class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-comments-o"></i> Comment</button>
+		</div>
+		</form> 
+        
+        
+        
+        
+        
+    
+
+
           </div><!-- /col-md-8 -->
           
           
@@ -33,4 +68,4 @@
 
         </div>
       </div>
-    </div>
+    

@@ -79,9 +79,9 @@
 						<li ng-hide="currentUser==''">
 							<a class="dropdown-toggle a-hover" data-toggle="dropdown">Job<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li ng-show="currentUser.role=='ADMIN'"><a href="#/job"><span>Post Job</span></a></li>
-								<li><a href="#/jobs"><span>Search Job</span></a></li>
-								<li><a href="#/view_applied_jobs"><span>Job Applied</span></a></li>
+								<li ng-show="currentUser.role=='User' && currentUser.role=='ADMIN'"><a href="#/list_vacantjobs"><span>Job Application</span></a></li>
+								<li><a href="#/list_jobs"><span>All Jobs</span></a></li>
+								<li ng-show="currentUser.role=='User' && currentUser.role=='ADMIN'"><a href="#/list_vacantjobs"><span>Job Applied</span></a></li>
 							</ul>
 						</li>
 
@@ -114,9 +114,9 @@
 	  <li ng-hide="currentUser==''" >  
 				
 								
-								  <li ng-show="currentUser.role!='ADMIN' && currentUser.role!='ROLE_USER'"><a href="#/login" ng-show="!$curen.isUserLoggedIn">sign in</a></li> 
-								 <li ng-show="currentUser.role=='ADMIN' || currentUser.role=='ROLE_USER'"><a ng-click="ctrl.logout()">Logout
-									 </a></li>
+								  <li ng-show="currentUser.role!='ADMIN' && currentUser.role!='USER'"><a href="#/login" ng-show="!$curen.isUserLoggedIn">sign in</a></li> 
+								 <li ng-show="currentUser.role=='ADMIN' || currentUser.role=='USER'"><a class="button" ng-click="ctrl.logout()" href="">logout</a>
+									 </li>
 				                  
 				                   </ul>
 				                   

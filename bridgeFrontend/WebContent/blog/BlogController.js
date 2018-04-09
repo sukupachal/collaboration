@@ -22,6 +22,21 @@ app.controller('BlogController', [
 				blogCommentCount : ''
 				}
 			self.blogs = [];
+			
+			 self.blogComment = 
+			    {       errorCode : '',
+						errorMessage : '',
+			    		blogCommentId : '',
+			    		blogId : '',
+			    		userId : '',
+			    		userName : '',
+			    		blogCommentDate:'',
+			    		blogComment : ''
+				}		
+			    
+			    self.blogComments = [];
+				
+
 
 			self.getSelectedBlog = function(id) {
 				console.log("-->BlogController : calling getSelectedBlog method : getting blog with id : " + id);
@@ -105,6 +120,45 @@ app.controller('BlogController', [
 						});
 				
 			};
+			
+			self.fetchAllBlogComments = function(id)
+			{
+				console.log("-->BlogController : calling fetchAllBlogComments method with id : "+ id);
+				BlogService.fetchAllBlogComments(id).then
+				(function(d) 
+				{
+					self.blogComments = d;
+						//calling getSelectedBlog(id) method ...
+					
+				},
+				function(errResponse) 
+				{
+					console.error('Error while fetching BlogComments...');
+				}
+				);
+			};
+			
+			
+			
+			self.createBlogComment = function(blogComment, id) {
+				console.log("-->BlogController : calling 'createBlogComment' method.", self.blog);
+				blogComment.blogId = id;
+				console.log("-->BlogController BlogId :" +blogComment.blogId);
+				BlogService.createBlogComment(blogComment).then
+							(function(d) 
+							{
+								console.log('Current User :',$rootScope.currentUser.userId)
+								self.blogComment = d;
+								console.log('-->BlogController :', self.blogComment)
+								self.fetchAllBlogComments(id);
+								self.resetBlogComment();
+							},
+							function(errResponse) {
+								console.error('Error while creating blogComment...');
+							}
+							);
+			};
+			
 
 			self.fetchAllBlogs();
 
@@ -152,6 +206,21 @@ app.controller('BlogController', [
 							blogCommentCount : ''
 
 				};
-				$scope.myForm.$setPristine(); // reset form...
-			};
-		} ]);
+			},
+				self.resetBlogComment = function() 
+				{
+					console.log('submit a new BlogComment', self.blogComment);
+					self.blogComment = {
+							    errorCode : '',
+							    errorMessage : '',
+					    		blogCommentId : '',
+					    		blogId : '',
+					    		userId : '',
+					    		userName : '',
+					    		blogCommentDate:'',
+					    		blogComment : ''
+						};
+					$scope.myForm.$setPristine(); // reset blogComment form...
+				};
+				
+			} ]);

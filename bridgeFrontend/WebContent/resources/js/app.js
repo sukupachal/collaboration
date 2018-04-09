@@ -74,7 +74,7 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
 		controller : 'JobController as ctrl'
 	})
 
-	.when('/list_job', {
+	.when('/list_jobs', {
 		templateUrl : 'job/list_jobs.html',
 		controller : 'JobController as ctrl'
 	})
@@ -83,6 +83,12 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
 		templateUrl : 'job/view_job.html',
 		controller : 'JobController as ctrl'
 	})
+	
+	.when('/list_vacantjobs', {
+		templateUrl : 'job/list_vacantjobs.html',
+		controller : 'JobController as ctrl'
+	})
+
 
 
 	
@@ -148,7 +154,7 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
 	});
 });
 
-app.run(function($rootScope, $location) {		//run() block gives us facility to inject any instance and constants in our application.
+app.run(function($rootScope, $location, $http) {		//run() block gives us facility to inject any instance and constants in our application.
 	console.log("--> app : entered app.run");
 
 	$rootScope.$on('$locationChangeStart', function(event, next, current) {		//The $locationChangeStart event can be used to prevent a location change going forward.
@@ -164,9 +170,9 @@ app.run(function($rootScope, $location) {		//run() block gives us facility to in
 		                                                   '/list_event',
 		                                                   '/view_event', 
 		                                                   '/list_forum',
-		                                                    
+		                                                   '/list_jobs',
 		                                                   '/search_job', 
-		                                                   '/view_job_details',
+		                                                   '/view_job',
 		                                                   '/chat',
 		                                                   '/myprofile']) === -1;
 		console.log("location "+$location.path());

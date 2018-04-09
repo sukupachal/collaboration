@@ -75,6 +75,7 @@ app.factory('UserService', ['$http', '$q', '$rootScope',
 								});
 				},
 				
+				
 				authenticateUser : function(user) {
 					console.log("--> UserService : calling 'authenticateUser' ");
 					return $http
@@ -86,7 +87,22 @@ app.factory('UserService', ['$http', '$q', '$rootScope',
 									console.log('Error while fetching  User');
 									return $q.reject(errResponse);
 								});
+				}  ,
+				
+				logout: function() {
+					console.log("--> UserService : calling 'logout' method.");
+					return $http
+								.get(BASE_URL+'/user/logout')
+								.then(function(response) {
+									return response.data;
+								},
+								function(errResponse) {
+									console.error('Error while logging out.');
+									return $q.reject(errResponse);
+								}
+							);
 				}
+
 				
 				
 				

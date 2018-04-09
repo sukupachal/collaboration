@@ -5,7 +5,8 @@ app.controller('UserController', [
 		'UserService',
 		'$location',
 		'$rootScope',
-		function($scope, UserService, $location, $rootScope) {
+		'$route',
+		function($scope, UserService, $location, $rootScope,$route) {
 			console.log("UserController...")
 
 			var self = this;
@@ -125,6 +126,20 @@ app.controller('UserController', [
 				}
 				self.deleteUser(id);
 			};
+			self.logout = function() {
+				console.log("--> UserController : calling logout method.");
+				
+				$rootScope.currentUser = {};
+				
+			//	$cookieStore.remove('currentUser');
+				UserService.logout();
+				
+				console.log("-->UserController : User Logged out.");
+				
+				//$window.location.reload();
+				$route.reload();
+				$location.path('/');
+			}
 
 			self.reset = function() {
 				console.log('submit a new User', self.user);
