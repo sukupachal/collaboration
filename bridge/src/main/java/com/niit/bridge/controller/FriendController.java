@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.bridge.dao.FriendDao;
@@ -122,6 +124,8 @@ public class FriendController {
 		System.out.println("**********End of listFriends() method.");
 		return new ResponseEntity<List<Friend>>(friend, HttpStatus.OK);
 	}
+
+
 
 /*public ResponseEntity<Friend> newFriendRequests(HttpSession session) {
 log.debug("**********Starting of newFriendRequests() method");

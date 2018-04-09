@@ -20,6 +20,9 @@ import com.niit.bridge.model.UserDetails;
 public class UserDetailsController {
 	@Autowired
 	UserDetailsDao userDetailsDao;
+	@Autowired
+	UserDetails userDetails;
+	
 	
 	
 	@RequestMapping(value="/test", method=RequestMethod.GET)
@@ -42,6 +45,7 @@ public class UserDetailsController {
 	@RequestMapping(value="/user/", method=RequestMethod.POST)
 	public ResponseEntity<UserDetails> creatUser(@RequestBody UserDetails users){
 		if(userDetailsDao.getUserByUserId(users.getUserId())==null){
+			users.setRole("USER");
 			userDetailsDao.saveUser(users);
 			return new ResponseEntity<UserDetails>(users,HttpStatus.OK);
 		}
