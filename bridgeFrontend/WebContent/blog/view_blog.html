@@ -56,7 +56,17 @@
         
         
         
+         <div class="w3-container w3-card w3-white w3-round w3-margin"  ng-repeat="blogComment in SelectedBlogComments "> <br>
+        <img src="resources/images/atomix_user31.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">{{blogComment.blogDate|date}}</span>
+        <h4>{{blogComment.userId}}</h4><br>
+        <h4>{{blogComment.blogComment}}</h4>
+        <hr class="w3-clear">
+        <p>{{blogComment.blogCommentId}}</p>
         
+         
+      </div> 
+      
         
     
 
@@ -68,4 +78,6 @@
 
         </div>
       </div>
+    </div>
+    </div>
     

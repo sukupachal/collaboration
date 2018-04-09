@@ -27,6 +27,22 @@ app
 													});
 								},
 								
+								
+								getSelectedFriend : function(id) {
+									console.log("-->FriendService : calling getSelectedFriend() method with id : " + id);
+									return $http
+												.get(BASE_URL+'/user/'+ id)
+												.then(function(response) {
+													$rootScope.selectedUser = response.data;
+													return response.data;
+												},
+												function(errResponse) {
+													console.error('Error while Fetching Profile.');
+													return $q.reject(errResponse);
+												});
+								},
+								
+								
 								getNewFriendRequests : function() {
 									return $http
 											.get(BASE_URL + '/newFriendRequests')

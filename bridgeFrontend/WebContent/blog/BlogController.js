@@ -129,6 +129,7 @@ app.controller('BlogController', [
 				{
 					self.blogComments = d;
 						//calling getSelectedBlog(id) method ...
+					$rootScope.SelectedBlogComments = self.blogComments;
 					
 				},
 				function(errResponse) 
@@ -144,7 +145,7 @@ app.controller('BlogController', [
 				console.log("-->BlogController : calling 'createBlogComment' method.", self.blog);
 				blogComment.blogId = id;
 				console.log("-->BlogController BlogId :" +blogComment.blogId);
-				BlogService.createBlogComment(blogComment).then
+				BlogService.createBlogComment(blogComment,id).then
 							(function(d) 
 							{
 								console.log('Current User :',$rootScope.currentUser.userId)
@@ -152,6 +153,7 @@ app.controller('BlogController', [
 								console.log('-->BlogController :', self.blogComment)
 								self.fetchAllBlogComments(id);
 								self.resetBlogComment();
+								$rootScope.blogComment = blogComment.userId;
 							},
 							function(errResponse) {
 								console.error('Error while creating blogComment...');

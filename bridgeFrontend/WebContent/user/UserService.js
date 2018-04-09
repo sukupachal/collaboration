@@ -49,6 +49,7 @@ app.factory('UserService', ['$http', '$q', '$rootScope',
 								});
 				},
 				
+				
 				updateUser : function(user, id) {
 					console.log("--> UserService : calling 'updateUser' method with id : "+id);
 					return $http

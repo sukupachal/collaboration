@@ -121,6 +121,13 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
    
   })
   
+  	.when('/register', {
+    templateUrl : 'user/register.html',
+    controller : 'UserController as ctrl'
+   
+  })
+
+  
 	
 	
 		/**
@@ -139,6 +146,12 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
 		templateUrl : 'friend/view_friend.html',
 		controller : 'FriendController as ctrl'
 	})
+	
+	.when('/friendProfile', {
+		templateUrl : 'friend/friendProfile.html',
+		controller : 'FriendController as ctrl'
+	})
+
 
 
 

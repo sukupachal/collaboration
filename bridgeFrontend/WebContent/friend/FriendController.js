@@ -60,6 +60,20 @@ app.controller('FriendController', [ 'FriendService', 'UserService', '$scope',
 								});
 			};
 			
+			self.getSelectedFriend = function(id) {
+				console.log("-->FriendController : calling getSelectedFriend method : getting user with id : " + id);
+				FriendService.getSelectedFriend(id).then(
+						function(d) {
+							self.user = d;
+							$location.path('/friendProfile');
+						}, 
+						function(errResponse) {
+							console.error('Error while fetching Profile...');
+						});
+			};
+
+			
+			
 			self.getMyFriends = function() {
 				console.log("--> getMyFriends");
 				var currentUser = $rootScope.currentUser

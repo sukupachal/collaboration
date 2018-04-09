@@ -6,7 +6,8 @@ app.controller('UserController', [
 		'$location',
 		'$rootScope',
 		'$route',
-		function($scope, UserService, $location, $rootScope,$route) {
+		'$window',
+		function($scope, UserService, $location, $rootScope,$route,$window) {
 			console.log("UserController...")
 
 			var self = this;
@@ -94,6 +95,17 @@ app.controller('UserController', [
 						});
 			};
 			
+			self.register = function() {
+				{
+					console.log("--> UserController : calling register() method.", self.user);
+					self.createUser(self.user);
+					console.log('Saving new user...');
+				}
+				$location.path('/login');
+				self.reset();
+			};
+			
+			
 			
 			
 			self.fetchAllUsers();
@@ -138,6 +150,7 @@ app.controller('UserController', [
 				
 				//$window.location.reload();
 				$route.reload();
+				$window.location.reload(true);
 				$location.path('/');
 			}
 

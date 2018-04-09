@@ -112,6 +112,7 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 							self.listJobs();
 							console.log("-->JobController : ", self.jobApplication);
 							console.log("-->JobController : ", self.job);
+							$location.path('/list_jobs');
 						},
 						function(errResponse) {
 							console.error('Error while applying for job...')
