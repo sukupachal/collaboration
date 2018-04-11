@@ -1,0 +1,76 @@
+<!-- The Grid -->
+  <div class="w3-row">
+ <!-- Left Column -->
+    <div class="w3-col m3" ng-show="currentUser.userIsOnline =='ONLINE'">
+      
+      
+      
+    
+    <!-- End Left Column -->
+    </div>
+    
+ <!-- Middle Column -->
+ 
+ <div>
+   <div class="container">
+   <div class="row">
+   <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+ 
+    <div class="w3-col m9" >
+    
+     <div class="w3-row-padding"  ng-show="currentUser.role=='USER' || currentUser.role=='ADMIN'">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+            	<form ng-submit="addMessage()" name="messageForm">
+									
+              <h4 class="w3-opacity">Welcome to global Chat...</h4>
+             <textarea class="form-control" placeholder="Write your message here..." rows="3"
+										ng-model="message" style="height: inherit;" autofocus >
+									</textarea>	
+              <br>
+              
+										<a class="max-char">max chars : 150  <span class="count" ng-bind="max - message.length"
+											ng-class="{danger:message.length >max}"> </span></a>
+			<button type="submit" class="w3-button w3-theme" value="Send" ng-disabled="message.length > max || message.length === 0">
+			<i class="fa fa fa-paper-plane"></i>Send </button>
+              
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div></div></div>
+      
+       
+       
+       <div class="w3-container w3-card w3-white w3-round w3-margin" ng-repeat="message in messages | orderBy:'time':'true'"  ng-if="(($index + 1) % 8==0)?true:false"><br>
+        <img src="resources/images/{{message.userGender}}.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <!-- <span class="w3-right w3-opacity" ng-class="{self: message.self}">{{message.time | time:'HH:mm'}}</span> -->
+        <h4 ng-class="{self: message.self}">{{message.userId}}</h4><br> 
+        <hr class="w3-clear">
+        
+        <p ng-class="{self: message.self}">{{message.message}}</p>
+        
+         <a href="" ng-class="{self: message.self}" ng-hide="message.userId==currentUser.userId"><button type="button" ng-click="viewProfile(message.userId)"  class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-user"></i> View Profile</button> </a>
+         
+      </div> 
+    
+   
+      
+    
+          <!-- End Middle Column -->
+    </div>
+
+    
+
+    
+  <!-- End Grid -->
+  </div>
+  
+
+
+
+
+

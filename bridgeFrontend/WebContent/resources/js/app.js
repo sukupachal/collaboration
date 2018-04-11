@@ -151,6 +151,17 @@ app.config(function($routeProvider) {		//We can use config() block to inject onl
 		templateUrl : 'friend/friendProfile.html',
 		controller : 'FriendController as ctrl'
 	})
+	
+	
+		/**
+	 * Chat related mapping
+	 */
+
+	.when('/chat', {
+		templateUrl : 'chat/chat.html',
+		controller : 'ChatController as ctrl'
+	})
+
 
 
 

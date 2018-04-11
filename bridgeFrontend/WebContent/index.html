@@ -84,11 +84,13 @@
 				</ul>
 						</li>
 				
-				 
+				 			<li ng-show="currentUser.role=='ADMIN' || currentUser.role=='USER'"><a href="#/chat"><span>Chat</span></a></li>
 				 
 				
 
 				<li><a href="#/myprofile">My Profile</a></li>
+				
+	
 				
 				<li ng-show="currentUser.role=='ADMIN'"><a href="#/list_users"><span>All Users</span></a></li>
 				 
@@ -144,16 +146,15 @@
 		<div class="container">
 			<div class="footer-bottom">
 				<div class="footer-bottom-left">
-					<p>
-						<a href="#/">Bridge </a> @2018. 	
-						 
-    <i class="fab fa-facebook-f"></i>
-     <i class="fab fa-github-alt"></i>	
+					<p><br><br><br>
+						<a href="#/">Bridge </a> @2018.  
+						 <i class="fab fa-facebook-f"></i>  
+						 <i class="fab fa-github-alt"></i>	
 	  <i class="fab fa-linkedin-in"></i>	
 	   <i class="fab fa-twitter"></i> 
-	   <i class="fab fa-google"></i>
-	   <i class="fab fa-pinterest-p"></i>      </p>
- 
+	  <!--  <i class="fab fa-google"></i>
+	   <i class="fab fa-pinterest-p"></i>  -->  </p>
+							
  </div>
 									
 				</div>
@@ -161,7 +162,8 @@
 		</div>
 	
 	
-	 	   
+						 
+   	   
 <!-- ---------------------- /footer end ------------------------->
 
 
@@ -203,6 +205,11 @@
 	<!-- friend related js files -->
 	<script src="friend/FriendController.js"></script>
 	<script src="friend/FriendService.js"></script>
+	
+	
+	<!-- chat related js files -->
+	<script src="chat/ChatController.js"></script>
+	<script src="chat/ChatService.js"></script>
 	
 	
 
