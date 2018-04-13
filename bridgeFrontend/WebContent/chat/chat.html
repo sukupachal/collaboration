@@ -1,3 +1,22 @@
+
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<head>
+<meta charset="UTF-8">
+<title>Bridge </title>
+<link rel="icon" href="resources/img/binder.png">
+
+<!-- Bootstrap, Font Awesome and jQuery css -->
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/css/jquery-ui.min.css" rel="stylesheet">
+
+
+</head>
+
+
+
+
+
 <!-- The Grid -->
   <div class="w3-row">
  <!-- Left Column -->
@@ -33,27 +52,29 @@
 										<a class="max-char">max chars : 150  <span class="count" ng-bind="max - message.length"
 											ng-class="{danger:message.length >max}"> </span></a>
 			<button type="submit" class="w3-button w3-theme" value="Send" ng-disabled="message.length > max || message.length === 0">
-			<i class="fa fa fa-paper-plane"></i>Send </button>
+			<i class="fa fa-paper-plane" aria-hidden="true"></i>Send </button>
               
               </form>
             </div>
           </div>
         </div>
-      </div>
+      </div>  
       </div>
       </div></div></div>
       
        
-       
-       <div class="w3-container w3-card w3-white w3-round w3-margin" ng-repeat="message in messages | orderBy:'time':'true'"  ng-if="(($index + 1) % 8==0)?true:false"><br>
-        <img src="resources/images/{{message.userGender}}.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <!-- <span class="w3-right w3-opacity" ng-class="{self: message.self}">{{message.time | time:'HH:mm'}}</span> -->
+        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+ 
+    <div class="w3-col m9" >
+       <div ng-repeat="message in messages   "><br>
+ 
+         <!-- <span>{{message.time   | time:'HH:MM'}}</span>  -->
         <h4 ng-class="{self: message.self}">{{message.userId}}</h4><br> 
         <hr class="w3-clear">
         
         <p ng-class="{self: message.self}">{{message.message}}</p>
         
-         <a href="" ng-class="{self: message.self}" ng-hide="message.userId==currentUser.userId"><button type="button" ng-click="viewProfile(message.userId)"  class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-user"></i> View Profile</button> </a>
+        <!--  <a href="" ng-class="{self: message.self}" ng-hide="message.userId==currentUser.userId"><button type="button" ng-click="viewProfile(message.userId)"  class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-user"></i> View Profile</button> </a> -->
          
       </div> 
     

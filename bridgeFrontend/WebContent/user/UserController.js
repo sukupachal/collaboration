@@ -40,6 +40,20 @@ app.controller('UserController', [
 							console.error('Error while fetching User...');
 						});
 			};
+			
+			self.sendFriendRequest = function sendFriendRequest(friendId) {
+				console.log("--> sendFriendRequest : "+friendId);
+				UserService.sendFriendRequest(friendId).then(
+						function(d) {
+							self.friend = d;
+							alert("Friend request sent...")
+						},
+						function(errResponse) {
+							console.error("Error while fetching friends.");
+						}
+					);
+			};
+			
 
 			self.fetchAllUsers = function() {
 				console.log("--> UserController : calling fetchAllUsers method.");

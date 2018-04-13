@@ -34,10 +34,12 @@
 							ng-click="ctrl.unFriend(friend, friend.friendId)"
 							value="Unfriend">
 							
-						<input type="button" class="btn btn-success btn-more"
-							ng-click="ctrl.getSelectedFriend(friend, selectedFriend.userId)"
+						 <input type="button" class="btn btn-success btn-more"
+							ng-click="ctrl.getSelectedFriend(selecteduser.friendId)"
 							value="Show profile">
-							
+					
+      
+						 
 
 					</div>
 				</div>
@@ -63,7 +65,7 @@
 
 			<div>
 
-				<div class="col-md-4 blogs-grid" ng-repeat="friend in $rootScope.newFriendRequests">
+				<div class="col-md-4 blogs-grid" ng-repeat="friend in newFriendRequests">
 				<div	>
 
 

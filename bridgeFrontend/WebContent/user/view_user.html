@@ -1,32 +1,80 @@
-<div>
-   <div class="container">
-   <div class="row">
-   <div class="col-md-8">
-   <h1><a style="color: #efefef; text-decoration: none;">{{selectedUser.name}}</a></h1>
-<h4>{{selectedUser.userId}} &nbsp;&nbsp;   </h4>
- </div>
- </div>
-<div class="row">
- <div>
-  <div>
-   <h3><i class="fa fa-cube">{{selectedUser.name}}</i></h3>
-       <p>{{selectedUser.userId}}</p>
-       <p>
-        
-       </p>
-     </div><!-- /user-area -->
-<div class="col-md-8 like-user" ng-hide="currentUser==''">
-<div>
-	
+<div ng-app="myApp">
 
-	</button>
+<div class="container">
+	<div class="row row-profile">
+		<div class="col-md-8 col-md-offset-2 profile-base">
+			<fieldset>
+				<legend>
+					<span>User Profile</span>
+					<!-- <a href="#/edit-profile" class="btn btn-info btn-edit">
+						<span>Edit Profile</span> 
+					</a> -->
+				</legend>
+				<div>
+					<form class="col-md-8 form-profile">
+						<div class="one-profile">
+							<div class="col-md-4">
+								<a class="floatleft">User ID</a>
+							</div>
+							<div class="col-md-8">
+								<label class="floatleft"> : {{selectedUser.userId}}</label>
+							</div>
+						</div>
+						<div class="one-profile">
+							<div class="col-md-4">
+								<a class="floatleft">User Name</a>
+							</div>
+							<div class="col-md-8">
+								<label class="floatleft"> : {{selectedUser.name}}</label>
+							</div>
+						</div>
+						<div class="one-profile">
+							<div class="col-md-4">
+								<a class="floatleft">Gender</a>
+							</div>
+							<div class="col-md-8">
+								<label class="floatleft"> : {{selectedUser.gender}}</label>
+							</div>
+						</div> 
+						<div class="one-profile">
+							<div class="col-md-4">
+								<a class="floatleft">Email Id</a>
+							</div>
+							<div class="col-md-8">
+								<label class="floatleft"> : {{selectedUser.email}}</label>
+							</div>
+						</div>
+						
+						<div class="one-profile">
+							<div class="col-md-4">
+								<a class="floatleft">Role in this project</a>
+							</div>
+							<div class="col-md-8">
+								<label class="floatleft"> : {{selectedUser.role}}</label>
+								<br><br>
+								
+								 <div class="one-profile">
+							<div class="col-md-4">
+								 <input type="button" class="btn btn-danger floatleft"
+							ng-click="ctrl.sendFriendRequest(selectedUser.userId)" 
+							value="Send Friendrequest">
+							</div></div>
+						 
+						 
+						 
+					
+								
+							</div>
+						</div>
+					</form>
+					<div class="col-md-4">
+						<!-- <img
+							src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+							class="profile-img"> -->
+					</div>
+				</div>
+			</fieldset>
+		</div>
+	</div>
 </div>
-        </div>
-          </div><!-- /col-md-8 -->
-          
-          
-          </div><!-- /col-md-4 -->
-
-        </div>
-      </div>
-    </div>
+</div>

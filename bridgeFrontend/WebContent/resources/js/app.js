@@ -197,7 +197,7 @@ app.run(function($rootScope, $location, $http) {		//run() block gives us facilit
 		                                                   '/list_jobs',
 		                                                   '/search_job', 
 		                                                   '/view_job',
-		                                                   '/chat',
+		                                                   
 		                                                   '/myprofile']) === -1;
 		console.log("location "+$location.path());
 		console.log("restrictedPage : " + restrictedPage);

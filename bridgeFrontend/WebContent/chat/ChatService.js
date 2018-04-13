@@ -40,8 +40,8 @@
     	var message = JSON.parse(data), out = {};
     	out.message = message.message;
     	out.userId = message.userId;
-    	out.time = new Date(message.time);	//*****
-         
+    	//out.time = new Date(message.time);	//*****
+    	out.time = message.time;
       return out;
     };
     

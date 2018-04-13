@@ -92,7 +92,7 @@
 				
 	
 				
-				<li ng-show="currentUser.role=='ADMIN'"><a href="#/list_users"><span>All Users</span></a></li>
+				<li ng-show="currentUser.role=='ADMIN' || currentUser.role=='USER'"><a href="#/list_users"><span>All Users</span></a></li>
 				 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -148,12 +148,8 @@
 				<div class="footer-bottom-left">
 					<p><br><br><br>
 						<a href="#/">Bridge </a> @2018.  
-						 <i class="fab fa-facebook-f"></i>  
-						 <i class="fab fa-github-alt"></i>	
-	  <i class="fab fa-linkedin-in"></i>	
-	   <i class="fab fa-twitter"></i> 
-	  <!--  <i class="fab fa-google"></i>
-	   <i class="fab fa-pinterest-p"></i>  -->  </p>
+						   
+						    </p>
 							
  </div>
 									
@@ -169,6 +165,7 @@
 
 	<script src="resources/js/sockjs-0.3.4.js"></script>
 	<script src="resources/js/stomp.js"></script>
+	<script src="resources/js/sockjs.js"></script>
 	
 	<!--  javascript for (angular + jquery + bootstrap)  -->
 	<script src="resources/js/angular.js"></script>
