@@ -41,7 +41,10 @@ public class FriendDaoImpl implements FriendDao{
 	@Transactional
 	public boolean save(Friend friend) {
 		try {
-			sessionFactory.getCurrentSession().save(friend);
+			Session s=getSession();
+			s.save(friend);
+			s.flush();
+			s.close();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -65,7 +68,7 @@ public class FriendDaoImpl implements FriendDao{
 	
 	@Transactional
 	public Friend get(String userId, String friendId) {
-		String hql = "from Friend where userId = '" + friendId + "' and friendId = '" + userId + "'";
+		String hql = "from Friend where ( userId = '" + friendId + "' and friendId = '" + userId + "'  and status = 'A' ) or " + " ( userId = '" + userId + "' and friendId = '" + friendId + "'  and status = 'A' ) "      ;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		@SuppressWarnings("unchecked")

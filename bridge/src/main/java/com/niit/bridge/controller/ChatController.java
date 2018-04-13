@@ -31,7 +31,7 @@ public class ChatController {
 		System.out.println("Message ID : "+message.getId());
 System.out.println("Message userId: "+message.getUserId());
 				
-		return new OutputMessage(message, new Date());
+		return new OutputMessage(message, new Date(System.currentTimeMillis()));
 
 	}
 	
