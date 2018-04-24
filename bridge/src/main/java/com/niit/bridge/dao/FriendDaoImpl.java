@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.niit.bridge.model.Friend;
 
 @EnableTransactionManagement
-@Repository(value="friendDAO")
+@Repository(value="friendDao")
 public class FriendDaoImpl implements FriendDao{
 	
 	@Autowired	
@@ -69,11 +69,12 @@ public class FriendDaoImpl implements FriendDao{
 	@Transactional
 	public Friend get(String userId, String friendId) {
 		String hql = "from Friend where ( userId = '" + friendId + "' and friendId = '" + userId + "'  and status = 'A' ) or " + " ( userId = '" + userId + "' and friendId = '" + friendId + "'  and status = 'A' ) "      ;
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		Session s=getSession();
+		Query query = s.createQuery(hql);
 		
 		@SuppressWarnings("unchecked")
 		List<Friend> list = (List<Friend>) query.list();
-		
+		s.close();
 		if(list != null && !list.isEmpty()) {
 			return list.get(0);
 		}
@@ -85,10 +86,12 @@ public class FriendDaoImpl implements FriendDao{
 	@Transactional
 	public List<Friend> getMyFriends(String userId) {
 		String hql = "from Friend where ( userId = '" + userId + "' and status = 'A' ) or ( friendId = '" + userId + "' and status = 'A' )";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		Session s=getSession();
+		Query query = s.createQuery(hql);
 		
 		@SuppressWarnings("unchecked")
 		List<Friend> list = (List<Friend>) query.list();
+		s.close();
 		return list;
 	}
 	
@@ -98,11 +101,12 @@ public class FriendDaoImpl implements FriendDao{
 		@Transactional
 	public List<Friend> getNewFriendRequests(String friendId){
 			String hql = "from Friend where friendId = '" + friendId + "' and status = 'N'";
-			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			Session s=getSession();
+			Query query = s.createQuery(hql);
 			
 			@SuppressWarnings("unchecked")
 			List<Friend> list = (List<Friend>) query.list();
-			
+			s.close();
 			return list;
 		}
 		
@@ -113,9 +117,10 @@ public class FriendDaoImpl implements FriendDao{
 		
 		String hql = "update Friend set isOnline = 'Y' where userId = '" + userId + "'";
 		
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		Session s=getSession();
+		Query query = s.createQuery(hql);
 		query.executeUpdate();
-		
+		s.close();
 	}
 	
 	
@@ -124,9 +129,25 @@ public class FriendDaoImpl implements FriendDao{
       public void setOffline(String userId) {
 		// TODO Auto-generated method stub
 		String hql = "update Friend set isOnline = 'N' where userId = '" + userId + "'";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		Session s=getSession();
+		Query query = s.createQuery(hql);
 		query.executeUpdate();
+		s.close();
 	
+	}
+	public Friend getRequest(String userId, String friendId) {
+		// TODO Auto-generated method stub
+		String hql = "from Friend where  userId = '" + friendId + "' and friendId = '" + userId + "'  and status = 'N' "      ;
+		Session s=getSession();
+		Query query = s.createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		List<Friend> list = (List<Friend>) query.list();
+		s.close();
+		if(list != null && !list.isEmpty()) {
+			return list.get(0);
+		}
+		return null;
 	}		
 
 	}

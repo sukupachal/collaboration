@@ -13,7 +13,7 @@ public interface FriendDao {
 	public boolean update(Friend friend);					
 			
 	public Friend get(String userId, String friendId);	
-	
+	public Friend getRequest(String userId, String friendId);
 	public List<Friend> getMyFriends(String userId);	
 	
 	public List<Friend> getNewFriendRequests(String friendId);

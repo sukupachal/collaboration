@@ -99,7 +99,7 @@ public class FriendController {
 		UserDetails loggedInUser = (UserDetails) session.getAttribute("loggedInUser");
 		String uid=loggedInUser.getUserId();
 		System.out.println("iiiiii" + uid );
-		Friend friend = friendDao.get(uid, friendId);
+		Friend friend = friendDao.getRequest(uid, friendId);
 		System.out.println("ppppp "+ friend);
 		friend.setUserId(loggedInUser.getUserId());
 		System.out.println("bbbbbb");
