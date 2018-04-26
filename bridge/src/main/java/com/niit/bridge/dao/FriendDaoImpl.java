@@ -148,8 +148,21 @@ public class FriendDaoImpl implements FriendDao{
 			return list.get(0);
 		}
 		return null;
-	}		
-
 	}
 	
+	
+	public boolean isFriendtrue(String userId, String friendId) {
+		// TODO Auto-generated method stub
+		String hql = "from Friend where ( userId = '" + friendId + "' and friendId = '" + userId + "'  and status = 'A' ) or " + " ( userId = '" + userId + "' and friendId = '" + friendId + "'  and status = 'A' )";
+		Session s=getSession();
+		Query query = s.createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Friend> list = (List<Friend>) query.list();
+		s.close();
+		if(list != null && !list.isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+}
 	
